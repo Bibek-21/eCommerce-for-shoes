@@ -29,6 +29,15 @@ message readUserResponse{
     repeated updateUserRequest user =1;
 }
 
+message readUsersRequest{
+
+
+}
+message readUsersResponse{
+    repeated updateUserRequest details = 1;
+
+}
+
 message updateUserRequest{
     string id =1;
     string name = 2;

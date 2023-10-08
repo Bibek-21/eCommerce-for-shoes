@@ -3,7 +3,11 @@ package userPoto.user.rpc;
 import "userProto.proto";
 
 service userCrudService{
-    rpc create(userProto.user.createUserRequest) returns (userProto.user.createUserResponse)
+    rpc create(userProto.user.createUserRequest) returns (userProto.user.createUserResponse);
+    rpc readAll (userProto.user.readUsersRequest) returns (userProto.user.readUsersResponse);
+    rpc read (userProto.user.readUserRequest) returns (userProto.user.readUserResponse);
+    rpc update (userProto.user.updateUserRequest) returns (userProto.user.updateUserResponse);
+    rpc delete (userProto.user.deleteUserRequest) returns (userProto.user.deleteUserProto);
 }
 
 
