@@ -1,5 +1,5 @@
 syntax = "proto3";
-package cartProto.cart;
+package cartProto.cart.rpc;
 import "cartProto.proto";
 
 
