@@ -1,0 +1,56 @@
+syntax ="proto3";
+package userProto.user ;
+
+message createUserRequest{
+
+    string name = 1;
+    string email = 2;
+    string role = 3;
+    string phoneNumber = 4;
+    string password = 5;
+}
+
+message createUserResponse{
+    string status=1;
+    string message= 2;
+
+}
+
+message readUserRequest{
+    string id =1;
+
+}
+message empty{
+
+
+}
+
+message readUserResponse{
+    repeated updateUserRequest user =1;
+}
+
+message updateUserRequest{
+    string id =1;
+    string name = 2;
+    string email = 3;
+    string role = 4;
+    string phoneNumber = 5;
+    string password = 6;
+}
+
+message updateUserResponse{
+ string status = 1;
+ string message = 2;
+}
+
+
+
+message deleteUserRequest{
+    string id = 1;
+}
+
+message deleteUserResponse{
+    string status = 1;
+    string message = 2;
+}
+

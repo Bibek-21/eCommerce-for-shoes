@@ -1,0 +1,9 @@
+syntax =  "proto3";
+package userPoto.user.rpc;
+import "userProto.proto";
+
+service userCrudService{
+    rpc create(userProto.user.createUserRequest) returns (userProto.user.createUserResponse)
+}
+
+
