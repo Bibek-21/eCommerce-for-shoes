@@ -1,0 +1,63 @@
+syntax= "proto3";
+package cartProto.cart;
+
+
+message createCartRequest{
+    string userId = 1;
+    string products = 2;
+    string active = 3; 
+
+}
+
+message createCartResponse{
+    string status = 1;
+    string message = 2;
+
+
+}
+
+message readCartsRequest{
+
+}
+
+message empty{
+
+}
+
+
+message readCartsResponse{
+    repeated updateCartRequest details = 1;
+
+}
+
+
+message readCartRequest{
+    string id =1;
+
+}
+
+message readCartResponse{
+    repeated updateCartRequest details = 1;
+
+}
+
+message updateCartRequest{
+     string id = 1;
+     string userId = 2;
+     string products = 3;
+     string active = 4; 
+
+}
+message updateCartResponse{
+    string status = 1;
+    string message = 2;
+}
+
+message deleteCartRequest{
+    string id =1;
+}
+
+message deleteCartResponse{
+    string status = 1;
+    string message = 2;
+}

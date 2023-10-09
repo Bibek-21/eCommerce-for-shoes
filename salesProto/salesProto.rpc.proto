@@ -1,0 +1,11 @@
+syntax = "proto3";
+package salesProto.sales.rpc;
+import "salesProto.proto";
+
+service salesCrudService{
+    rpc create (salesProto.sales.createSaleRequest) returns (salesProto.sales.createSaleResponse);
+    rpc readAll (salesProto.sales.readSalesRequest) returns (salesProto.sales.readSalesResponse);
+    rpc read (salesProto.sales.readSaleRequest) returns (salesProto.sales.readSaleResponse);
+    rpc update (salesProto.sales.updateSaleRequest) returns (salesProto.sales.updateSaleResponse);
+    rpc delete (salesProto.sales.deleteSaleRequest) returns (salesProto.sales.deleteSaleResponse);
+}

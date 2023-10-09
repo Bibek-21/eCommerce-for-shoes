@@ -1,0 +1,63 @@
+syntax = "proto3";
+package salesProto.sales;
+
+message createSaleRequest{
+    string userId=1;
+    string amount =2; 
+    string merchantEmail = 3;
+    string mercahntName = 4;
+    string merchantMobile = 5;
+    string type = 6;
+    string user = 7;
+    string active = 8;
+
+}
+
+message createSaleResponse{
+
+    string status = 1;
+    string message = 2;
+
+}
+
+message readSaleRequest{
+    string id = 1;
+}
+
+message readSaleResponse{
+    repeated updateSaleRequest details = 1;
+
+}
+
+message readSalesRequest{
+
+}
+message empty{
+
+}
+
+message readSalesResponse{
+    repeated updateSalesRequest details = 1;
+
+}
+
+message updateSalesRequest{
+    string userId=1;
+    string amount =2; 
+    string merchantEmail = 3;
+    string mercahntName = 4;
+    string merchantMobile = 5;
+    string type = 6;
+    string user = 7;
+    string active = 8;
+}
+
+message deleteSalesRequest{
+    string id = 1;
+
+}
+
+message deleteSaleResponse{
+    string status = 1;
+    string message  = 2;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package cartProto.cart.rpc;
+import "cartProto.proto";
+
+
+service cartCrudService{
+    rpc create (cartProto.cart.createCartRequest) returns (cartProto.cart.createCartResponse);
+    rpc readAll (cartProto.cart.readCartsRequest) returns (cartProto.cart.readCartsResponse);
+    rpc read (cartProto.cart.readCartRequest) returns (cartProto.cart.readCartResponse);
+    rpc update (cartProto.cart.updateCartRequest) returns (cartProto.cart.updateCartResponse);
+    rpc delete (cartProto.cart.deleteCartRequest) returns (cartProto.cart.deletecartResponse);
+}
