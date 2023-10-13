@@ -7,7 +7,7 @@
 
     db.mongoose= mongoose;
     db.URI = config.URI;
-    db.users= require('../../mcs/mcs-users/models/user')(mongoose)
+    db.users= require('../../mcs/mcs-users/models/user.js')(mongoose)
 
 
     db.mongoose

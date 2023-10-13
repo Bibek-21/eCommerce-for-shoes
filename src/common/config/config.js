@@ -1,6 +1,6 @@
 "use strict";
 (()=>{
     module.exports={
-        URI: 'mongodb://mongodb:27017/ECOMMERCE'
+        URI: 'mongodb://127.0.0.1:27017/ECOMMERCE'
     }
 })();
