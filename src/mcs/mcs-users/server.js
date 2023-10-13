@@ -36,9 +36,9 @@ const userService = require("./modules/user-modules/index.js"); // this contains
 // we add services into the server here change the proto.rpc service according to the proto we will build and check wheather the proto path is correct and if the data s being triggered or not
 server.addService(userProto.userProto.user.rpc.userCrudService.service, {
   create: userService.createUser,
-  // read: userService.,
-  // readAll: userService.readAllUsers,
-  // update: userService.updateUserById,
+  read: userService.readById,
+  readAll: userService.readAllUsers,
+  update: userService.updateById,
   delete: userService.deleteById
 });
 //binding server into the host and port  and starting server at the required port then this port is used by client or user client to help integrate then service in the client
