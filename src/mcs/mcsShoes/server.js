@@ -1,17 +1,17 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const dotenv = require('dotenv');
-
-
+const path = require('path')
+const db = require('../../common/helper/mongodb.js')
 //environments
 
-dotenv.config({envPath})
+dotenv.config({})
+
+const port = process.env.PORT;
+const grpcHost = process.env.GRPC_HOST;
 
 //protoPath 
-const mainPath = `${__dirname}`
-const tempPath = `./proto/shoesProto/shoesProto.rpc.proto`
-
-const protoPath = `${mainPath}/${tempPath}`
+const protoPath = path.join(process.cwd(),`/src/common/Proto/shoesProto/shoesProto.rpc.proto`);
 
 //definiing proto package /file
 const packageDefinition = protoLoader.loadSync(protoPath,{
@@ -28,22 +28,22 @@ const server= new grpc.Server()
 
 //define service 
 
-const shoesService = require('./modules/index')
+const shoesService = require('./modules/shoesModules/index.js')
 
 //add service on the grpc server
-server.addService(shoesProto.shoesProto.proto.rpc.shoesCrud.services,{
+server.addService(shoesProto.shoesCrud.proto.rpc.shoesCrudService.service,  {
 
-    create: shoesService.create,
-    readAll: shoesService.readAll,
-    read : shoesService.read,
-    update : shoesService.update,
-    delete : shoesService.delete 
-
+    create : shoesService.createShoe,
+    read : shoesService.readShoe,
+    readAll: shoesService.readShoes,
+    update : shoesService.updateShoe,
+    delete : shoesService.deleteShoes
+    
 })
 
 server.bindAsync(
     `${grpcHost}:${port}`,
-    grpc.serverCredentials.createUnsecure(),
+    grpc.ServerCredentials.createInsecure(),
     (err,port)=>{
         if(err){
             console.log(`Server error ${err.message}`);
@@ -52,6 +52,7 @@ server.bindAsync(
         else{
             console.log(`Server started at port ${port}`);
             server.start();
+            db.mongoose.connect;
         }
     }
 

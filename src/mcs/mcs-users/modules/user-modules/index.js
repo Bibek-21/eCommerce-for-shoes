@@ -55,7 +55,7 @@ const userModel = require('../../models/user.js')
                 details.email= dbResponse.email;
                 details.role= dbResponse.role;
                 details.phoneNumber = dbResponse.phoneNumber;
-                details.password = dbResponse.password;
+                
             }
             return callback(null,details)
         } catch (error) {

@@ -1,19 +1,19 @@
 syntax= "proto3";
-package shoesProto.proto;
+package shoesCrud.proto;
 
-message createShoesRequest{
-string name=1;
-string brand =2;
-string price = 3;
-string currency = 4;
-string averageRating = 5;
-string photo = 6;
-string description = 7;
-string category =8;
-string discount =9;
+message createShoeRequest{
+    string name=1;
+    string brand =2;
+    string price = 3;
+    string currency = 4;
+    string averageRating = 5;
+    string photo = 6;
+    string description = 7;
+    string category =8;
+    string discount =9;
 
 }
-message createShoesResponse{
+message createShoeResponse{
     string status = 1;
     string message = 2;
 }
@@ -22,8 +22,17 @@ message readShoeRequest{
     string id =1;   
 }
 
-message reasShoeResponse{
-    repeated updateShoesRequest details = 1;
+message readShoeResponse{
+    string id =1;
+    string name=2;
+    string brand =3;
+    string price = 4;
+    string currency = 5;
+    string averageRating = 6;
+    string photo = 7;
+    string description = 8;
+    string category =9;
+    string discount =10;
 
 }
 
@@ -37,10 +46,10 @@ message readShoesRequest{
 }
 
 message readShoesResponse{
-repeated updateShoesRequest details =1;
+repeated updateShoeRequest details =1;
 }
 
-message updateShoesRequest{
+message updateShoeRequest{
     string id =1;
     string name=2;
     string brand =3;
@@ -53,18 +62,18 @@ message updateShoesRequest{
     string discount =10;
 
 }
-message updateShoesResponse{
+message updateShoeResponse{
     string status =1;
     string message = 2;
 
 
 }
 
-message deleteShoesRequest{
+message deleteShoeRequest{
     string id = 1;
 }
 
-message deleteShoesResponse{
+message deleteShoeResponse{
     string status = 1;
     string message = 2;
     

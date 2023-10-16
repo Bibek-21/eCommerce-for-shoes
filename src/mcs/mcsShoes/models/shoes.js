@@ -63,7 +63,9 @@ const ShoesSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-}, {
+},{timestamps: true},
+
+{
     toJSON: { virtuals: true},
     toObject: { virtuals: true}
 })

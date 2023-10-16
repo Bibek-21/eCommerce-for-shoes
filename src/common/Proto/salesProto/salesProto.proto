@@ -25,7 +25,14 @@ message readSaleRequest{
 }
 
 message readSaleResponse{
-    repeated updateSaleRequest details = 1;
+    string userId=1;
+    string amount =2; 
+    string merchantEmail = 3;
+    string mercahntName = 4;
+    string merchantMobile = 5;
+    string type = 6;
+    string user = 7;
+    string active = 8;
 
 }
 
@@ -41,7 +48,7 @@ message readSalesResponse{
 
 }
 
-message updateSalesRequest{
+message updateSaleRequest{
     string userId=1;
     string amount =2; 
     string merchantEmail = 3;
@@ -52,7 +59,7 @@ message updateSalesRequest{
     string active = 8;
 }
 
-message deleteSalesRequest{
+message deleteSaleRequest{
     string id = 1;
 
 }
