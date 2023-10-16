@@ -8,7 +8,6 @@ const salesSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "users"
     },
-
     amount : Number,
     merchantEmail : String,
     merchantName : String,
