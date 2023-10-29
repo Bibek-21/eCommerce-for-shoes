@@ -1,12 +1,12 @@
 syntax = "proto3";
-package salesCrud.proto.rpc;
-import "salesProto.proto";
+package shoesCrud.proto.rpc;
+import "shoesProto.proto";
 
 
-service saleCrudService{
-    rpc create (saleCrud.proto.createSaleRequest) returns (saleCrud.proto.createSaleResponse);
-    rpc readAll (saleCrud.proto.readsalesRequest) returns (saleCrud.proto.readsalesResponse);
-    rpc read (saleCrud.proto.readSaleRequest) returns (saleCrud.proto.readSaleResponse);
-    rpc update (saleCrud.proto.updateSaleRequest) returns (saleCrud.proto.updateSaleResponse);
-    rpc delete (saleCrud.proto.deleteSaleRequest) returns (saleCrud.proto.deleteSaleResponse);
+service shoesCrudService{
+    rpc create (shoesCrud.proto.createShoeRequest) returns (shoesCrud.proto.createShoeResponse);
+    rpc readAll (shoesCrud.proto.readShoesRequest) returns (shoesCrud.proto.readShoesResponse);
+    rpc read (shoesCrud.proto.readShoeRequest) returns (shoesCrud.proto.readShoeResponse);
+    rpc update (shoesCrud.proto.updateShoeRequest) returns (shoesCrud.proto.updateShoeResponse);
+    rpc delete (shoesCrud.proto.deleteShoeRequest) returns (shoesCrud.proto.deleteShoeResponse);
 }
