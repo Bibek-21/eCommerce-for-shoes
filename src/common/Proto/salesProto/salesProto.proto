@@ -9,7 +9,6 @@ message createSaleRequest{
     string merchantMobile = 5;
     string type = 6;
     string user = 7;
-    string active = 8;
 
 }
 
@@ -32,7 +31,6 @@ message readSaleResponse{
     string merchantMobile = 5;
     string type = 6;
     string user = 7;
-    string active = 8;
 
 }
 
@@ -44,19 +42,24 @@ message empty{
 }
 
 message readSalesResponse{
-    repeated updateSalesRequest details = 1;
+    repeated updateSaleRequest details = 1;
 
 }
 
 message updateSaleRequest{
-    string userId=1;
-    string amount =2; 
-    string merchantEmail = 3;
-    string mercahntName = 4;
-    string merchantMobile = 5;
-    string type = 6;
-    string user = 7;
-    string active = 8;
+    string id = 1;
+    string userId=2;
+    string amount =3; 
+    string merchantEmail = 4;
+    string mercahntName = 5;
+    string merchantMobile = 6;
+    string type = 7;
+    string user = 8;
+}
+
+message updateSaleResponse{
+    string status = 1;
+    string message = 2;
 }
 
 message deleteSaleRequest{

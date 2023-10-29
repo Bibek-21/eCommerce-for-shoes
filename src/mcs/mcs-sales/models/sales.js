@@ -16,7 +16,7 @@ const salesSchema = new mongoose.Schema({
     user : String,
 
     active: {
-        type : boolean,
+        type : Boolean,
         default : true
 
     },

@@ -4,16 +4,20 @@ package cartProto.cart;
 
 message createCartRequest{
     string userId = 1;
-    string products = 2;
-    string active = 3; 
+    repeated productDesc products = 2;
 
 }
 
 message createCartResponse{
     string status = 1;
     string message = 2;
+}
 
-
+message productDesc{
+    string productId = 1;
+    string quantity = 2;
+    string name = 3;
+    string price = 4;
 }
 
 message readCartsRequest{
@@ -25,10 +29,10 @@ message empty{
 }
 
 
-message readCartsResponse{
-    repeated updateCartRequest details = 1;
-
-}
+// message readCartsResponse{
+//     string userId = 1;
+//      repeated productDesc products = 2;
+// }
 
 
 message readCartRequest{
@@ -37,17 +41,24 @@ message readCartRequest{
 }
 
 message readCartResponse{
-    repeated updateCartRequest details = 1;
+    string userId = 1;
+    string productId = 2;
+    string quantity = 3;
+    string name = 4;
+    string price = 5;
 
+}
+
+message readCartsResponse{
+    repeated updateCartRequest details = 1;
 }
 
 message updateCartRequest{
-     string id = 1;
-     string userId = 2;
-     string products = 3;
-     string active = 4; 
+     string userId = 1;
+     repeated productDesc products = 2;
 
 }
+
 message updateCartResponse{
     string status = 1;
     string message = 2;

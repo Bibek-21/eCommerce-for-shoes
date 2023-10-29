@@ -28,5 +28,13 @@ exports.readSales = async(call,callback)=>{
     } catch (error) {
         return callback(error)
     }
+},
+exports.readSales = async(call,callback)=>{
+    let response= {};
+    try {
+        const dbResponse = await salesModule.findById(call.request.userId)
+    } catch (error) {
+        return callback(error)
+    }
 }
 })();
