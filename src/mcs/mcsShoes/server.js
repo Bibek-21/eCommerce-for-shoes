@@ -3,12 +3,19 @@ const protoLoader = require('@grpc/proto-loader');
 const dotenv = require('dotenv');
 const path = require('path')
 const db = require('../../common/helper/mongodb.js')
+const authUser  = require('./modules/authUser.js')
 //environments
 
 dotenv.config({})
 
-const port = process.env.PORT;
+const port = process.env.SHOESPORT;
 const grpcHost = process.env.GRPC_HOST;
+
+// const meta = new grpc.Metadata();
+
+// const preInterceptor = async()
+
+
 
 //protoPath 
 const protoPath = path.join(process.cwd(),`/src/common/Proto/shoesProto/shoesProto.rpc.proto`);
@@ -32,7 +39,6 @@ const shoesService = require('./modules/shoesModules/index.js')
 
 //add service on the grpc server
 server.addService(shoesProto.shoesCrud.proto.rpc.shoesCrudService.service,  {
-
     create : shoesService.createShoe,
     read : shoesService.readShoe,
     readAll: shoesService.readShoes,

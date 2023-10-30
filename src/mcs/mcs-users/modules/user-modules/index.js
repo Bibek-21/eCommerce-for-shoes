@@ -1,24 +1,10 @@
-// "use strict";
-// (()=>{
-
-//     module.exports={
-//         createUser:require('./user-modules/create-user'),
-//         readUserById:require('./user-modules/read-user-by-id'),
-//         readAllUsers:require('./user-modules/read-all-users'),
-//         updateUserById:require('./user-modules/update-user-by-id'),
-//         deleteUserById:require('./user-modules/delete-user-by-id')
-//     }
-
-// })();
-
-
-
 
 
 "use strict";
-
+const grpc = require('@grpc/grpc-js')
+const create = require('grpc-create-metadata')
 const httpStatus = require('http-status');
-
+const jwt = require('jsonwebtoken');
 (()=>{
 const htppstatus = require('http-status')
 const userModel = require('../../models/user.js')
@@ -124,6 +110,42 @@ const userModel = require('../../models/user.js')
         } catch (error) {
             callback(error)
         }
+    }
+
+    exports.login = async(call,callback)=>{
+
+        let response = {
+            status: httpStatus[400],
+            token: ''
+        };
+
+        try {
+            const user = await userModel.findOne({email:call.request.email}).select('+password');
+
+            if(!user){
+                return callback(null, response)
+
+            }
+            const validUser = await user.matchPassword(call.request.password)
+            if(validUser){
+                // const meta = create({})
+                // const meta = new grpc.Metadata();
+
+                response.status = httpStatus.OK;
+                response.token =  jwt.sign({id: user.id}, process.env.JWT_SECRET, {
+                    expiresIn: process.env.JWT_EXPIRE
+                });
+
+                // meta.add('token', `Bearer ${response.token}`)
+                // console.log(meta.getMap())
+            }
+            return callback(null,response)
+            
+        } catch (error) {
+            return callback(error)
+        }
+
+
     }
 
 })();

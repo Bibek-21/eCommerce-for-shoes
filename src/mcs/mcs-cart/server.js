@@ -1,9 +1,10 @@
 const grpc = require("@grpc/grpc-js");
 const protoLoader  = require("@grpc/proto-loader");
 const dotenv = require("dotenv");
-
+const interceptors = require('grpcjs-interceptors');
 const path  = require('path');
 const db  = require('../../common/helper/mongodb');
+const protect = require('./middleware/authentication.js')
 
 dotenv.config();
 
@@ -20,12 +21,15 @@ const userPackageDefinition = protoLoader.loadSync(protoPath,{
 );
 
 
-const server = new grpc.Server();
+const server = interceptors.serverProxy(new grpc.Server());
+server.use(protect.authUser)
+
+
+// const server = new grpc.Server();
 
 const cartProto = grpc.loadPackageDefinition(userPackageDefinition);
 
 const cartService = require('./modules/cartModules/index.js');
-
 
 server.addService(cartProto.cartProto.cart.rpc.cartCrudService.service,{
     create : cartService.createCart,
@@ -33,6 +37,7 @@ server.addService(cartProto.cartProto.cart.rpc.cartCrudService.service,{
     update : cartService.updateCart,
     delete : cartService.deleteCart
 })
+
 
 server.bindAsync(
     `${grpcHost}:${port}`,

@@ -4,6 +4,7 @@ import "userProto.proto";
 
 service userCrudService{
     rpc create(userProto.user.createUserRequest) returns (userProto.user.createUserResponse);
+    rpc login (userProto.user.loginRequest) returns (userProto.user.loginResponse);
     rpc readAll (userProto.user.readUsersRequest) returns (userProto.user.readUsersResponse);
     rpc read (userProto.user.readUserRequest) returns (userProto.user.readUserResponse);
     rpc update (userProto.user.updateUserRequest) returns (userProto.user.updateUserResponse);

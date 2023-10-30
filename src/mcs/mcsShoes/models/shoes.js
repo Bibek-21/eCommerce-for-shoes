@@ -58,6 +58,7 @@ const ShoesSchema = new mongoose.Schema({
     uploadedBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'Users',
+        required : true
     },
     createdAt: {
         type: Date,

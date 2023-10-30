@@ -13,7 +13,7 @@ const db = require('../../common/helper/mongodb.js')
 
 dotenv.config();
 
-const port = process.env.PORT;
+const port = process.env.USERPORT;
 const grpcHost = process.env.GRPC_HOST;
 
 
@@ -36,6 +36,7 @@ const userService = require("./modules/user-modules/index.js"); // this contains
 // we add services into the server here change the proto.rpc service according to the proto we will build and check wheather the proto path is correct and if the data s being triggered or not
 server.addService(userProto.userProto.user.rpc.userCrudService.service, {
   create: userService.createUser,
+  login: userService.login,
   read: userService.readById,
   readAll: userService.readAllUsers,
   update: userService.updateById,
